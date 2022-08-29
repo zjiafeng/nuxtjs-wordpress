@@ -1,0 +1,57 @@
+{
+  "name": "xm-nuxt-wordpress",
+  "version": "1.0.0",
+  "description": "My tremendous Nuxt.js project",
+  "author": "xuanmos <me@xuanmo.xin>",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "watch:theme": "node watch.js",
+    "build": "nuxt build && npm start",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue .",
+    "precommit": "npm run lint",
+    "pm2": "pm2 start npm --name 'nuxt' -- run build --watch",
+    "git:push": "git push origin master && git push gitee master"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.11.0",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "@xuanmo/javascript-utils": "^0.0.28",
+    "element-ui": "^2.13.2",
+    "highlight.js": "^11.5.1",
+    "html2canvas": "1.0.0-alpha.12",
+    "nuxt": "^2.12.2",
+    "qrcode": "^1.4.4"
+  },
+  "devDependencies": {
+    "@nuxtjs/proxy": "^2.0.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.2.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-html": "^6.0.2",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "nodemon": "^2.0.4",
+    "sass": "^1.43.4",
+    "sass-loader": "10.0.0",
+    "vuex": "^3.6.2"
+  },
+  "gitHooks": {
+    "pre-commit": "npm run lint"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8",
+    "safari 6"
+  ]
+}

@@ -1,0 +1,84 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-theme: #{$color-theme};
+    --color-theme-secondary: var(--color-sub-background);
+    --color-title: rgba(255, 255, 255, .75);
+    --color-primary: rgba(255, 255, 255, .75);
+    --color-secondary: rgba(255, 255, 255, .45);
+    --color-primary-reverse: rgba(0, 0, 0, .85);
+    --color-secondary-reverse: rgba(0, 0, 0, .45);
+    --color-main-background: #2d363c;
+    --color-sub-background: #293238;
+    --color-white: #{$color-white};
+    --color-border: rgba(233, 234, 237, .3);
+    --color-menu-background-m: var(--color-sub-background);
+  }
+
+  code:not([class*="lang"]),
+  .code {
+    background: var(--color-main-background);
+    border-color: var(--color-border);
+    color: rgba(221, 17, 68, 0.8);
+  }
+  blockquote {
+    background: var(--color-main-background);
+  }
+  img {
+    box-shadow: none !important;
+    filter: opacity(.8);
+  }
+  .nuxt-loading-container {
+    background: rgba(0, 0, 0, .8);
+  }
+  pre[class*="language-"] > code {
+    background: var(--color-main-background);
+    color: var(--color-primary);
+  }
+  button,
+  input,
+  select,
+  textarea {
+    outline: 0;
+    border: 0;
+    background: none;
+    color: var(--color-primary);
+  }
+
+  .banner-wrap {
+    .list {
+      background: none !important;
+    }
+
+    .title {
+      background: rgba(0, 0, 0, .6) !important;
+      color: var(--color-primary);
+    }
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .token.variable {
+    background: none;
+  }
+
+  .el-pagination .btn-next,
+  .el-pagination .btn-prev,
+  .btn-quicknext {
+    color: var(--color-primary) !important;
+  }
+
+  .header-container .nav-wrapper {
+    a {
+      color: var(--color-primary);
+    }
+
+    .nuxt-link-exact-active {
+      color: var(--color-theme);
+    }
+  }
+
+  .header-container .search-wrapper.is-show {
+    background: var(--color-main-background) !important;
+  }
+}

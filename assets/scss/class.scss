@@ -1,0 +1,176 @@
+// 左浮动
+.fl {
+  float: left;
+}
+
+// 右浮动
+.fr {
+  float: right;
+}
+
+// 清除浮动
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.h-f-100 {
+  height: 100%;
+}
+
+.vertical-middle {
+  vertical-align: middle;
+}
+
+// 文字对齐；使用：align-left
+$align: left, center, right, justify;
+@each $str in $align {
+  .align-#{$str} {
+    text-align: $str;
+  }
+}
+
+// 状态显示
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.o-hide {
+  overflow: hidden;
+}
+
+// 内外边距；使用：m-t-5px 或 p-t-5px
+$margin: (
+  top: 0 5 10 15 20,
+  right: 0 5 10 15 20,
+  bottom: 0 5 10 15 20,
+  left: 0 5 10 15 20
+);
+$marginDirection: margin, padding;
+@each $direction, $value in $margin {
+  @each $num in $value {
+    @each $d in $marginDirection {
+      .#{str-slice($d, 1, 1)}-#{str-slice($direction, 1, 1)}-#{$num}px {
+        @if ($num == 0) {
+          #{$d}-#{$direction}: #{$num}px !important;
+        } @else {
+          #{$d}-#{$direction}: #{$num}px;
+        }
+      }
+    }
+  }
+}
+
+// 字体大小
+.f-s-small {
+  font-size: $font-size-small;
+}
+
+.f-s-base {
+  font-size: $font-size-base;
+}
+
+.f-s-large {
+  font-size: $font-size-large;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.word-break {
+  word-break: break-word;
+}
+
+.c-red {
+  color: $color-red;
+}
+
+.c-theme {
+  color: $color-theme;
+}
+
+.case-show {
+  display: block;
+  width: 150px;
+  margin: 20px auto;
+  padding: 10px 18px;
+  background-color: $color-theme;
+  border-radius: $border-radius;
+  text-align: center;
+  color: $color-white !important;
+}
+
+code:not([class*="lang"]),
+.code {
+  padding: 2px 5px;
+  background: #f7f7f9;
+  border-radius: 3px;
+  font-family: "play";
+  color: #d14;
+}
+
+.wrap {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: 1px solid var(--color-border);
+  border-radius: $border-radius;
+  color: $color-theme;
+  cursor: pointer;
+
+  &.active {
+    background: $color-theme;
+    color: $color-white;
+  }
+
+  .iconfont {
+    vertical-align: middle;
+  }
+}
+
+.desktop-show {
+  display: block;
+}
+
+.phone-show,
+.tablet-show {
+  display: none;
+}
+
+// 禁止点击
+.prohibit-event__none {
+  pointer-events: none;
+}
+
+.box-shadow__hide {
+  box-shadow: none !important;
+}
+
+.keep-all {
+  word-break: keep-all;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.img-hover {
+  transition: .5s;
+  &:hover {
+    transform: scale(1.1);
+  }
+}

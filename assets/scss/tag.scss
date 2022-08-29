@@ -1,0 +1,118 @@
+// 设置标签默认样式
+* {
+  margin: 0;
+  padding: 0;
+  word-break: break-all;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: $font-size-base;
+  font-weight: 500;
+}
+
+button,
+input,
+select,
+textarea {
+  outline: 0;
+  border: 0;
+  background: none;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+input {
+  &[type=submit] {
+    font-family: inherit;
+  }
+}
+
+button {
+  word-break: keep-all;
+  white-space: nowrap;
+  color: inherit;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style-position: inside;
+}
+
+// 过滤文章正文中的 li 元素
+li:not(.content-details li) {
+  list-style: none;
+}
+
+.content-details {
+  li {
+    list-style-position: inside;
+  }
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: top;
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.5s;
+  color: var(--color-primary);
+
+  &:hover {
+    color: $color-theme;
+  }
+}
+
+table {
+  overflow-x: auto;
+  margin-top: 15px;
+  border: 0;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 3px 10px;
+  border: 1px solid #dee2e6;
+}
+
+tr {
+  &:not(:last-child) {
+    td {
+      border-bottom: 0;
+    }
+  }
+
+  td,
+  th {
+    &:first-child {
+      border-right: 0;
+    }
+  }
+}
+
+blockquote {
+  margin-top: 10px;
+  padding: 10px;
+  background: #f8f8f8;
+  border-radius: 5px;
+
+  p,
+  ul,
+  ol {
+    margin: 0 !important;
+  }
+
+  li {
+    margin-top: var(--small-gap);
+  }
+}

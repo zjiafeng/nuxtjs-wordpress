@@ -4,12 +4,12 @@
     <div class="header-content" ref="header">
       <div class="wrap h-f-100">
         <!-- logo 开始 -->
-        <div class="logo">
+        <!-- <div class="logo">
           <h1>{{ info.blogName }}</h1>
           <nuxt-link :to="{ name: 'index' }" class="block">
             <img :src="info.logo" class="vertical-middle" width="120" height="40">
           </nuxt-link>
-        </div>
+        </div> -->
         <!-- logo结束 -->
         <!-- 导航开始 -->
         <div :class="['nav-wrapper', 'h-f-100', menuStatus && 'is-show']">
@@ -204,7 +204,7 @@ $headerHeight: 60px;
   // 导航
   .nav-wrapper {
     flex: 1;
-    margin: 0 20px;
+    // margin: 0 20px;
     .nav-view {
       display: flex;
     }
@@ -247,7 +247,7 @@ $headerHeight: 60px;
     .iconfont {
       width: 30px;
       height: 30px;
-      background: $color-main-background;
+      background: var(--color-main-background);
       text-align: center;
       line-height: 30px;
       color: $color-primary;

@@ -49,6 +49,8 @@ body {
   &.blank-page {
     background-color: var(--color-sub-background);
   }
+  background-image: url(../images/road_tree.jpg) !important;
+  background-size: cover;
 }
 
 .nuxt-link-exact-active {

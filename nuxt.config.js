@@ -21,7 +21,8 @@ export default {
       // 百度主推文章收录用
       { src: 'https://zz.bdstatic.com/linksubmit/push.js' },
       // 加入百度统计js，使用时自行添加为自己的
-      { src: 'https://hm.baidu.com/hm.js?fede818b3989d9a55d75f9ac72143da5' }
+      { src: 'https://hm.baidu.com/hm.js?fede818b3989d9a55d75f9ac72143da5' },
+      { src: 'https://cdn.jsdelivr.net/gh/SGYZ0910/CDN@1.0.5/js/love.js' }
     ]
   },
 
@@ -70,15 +71,15 @@ export default {
   // 将此处2个地址改为自己的地址
   proxy: {
     '/api': {
-      // target: 'https://www.jiafeng.co',
-      target: 'http://120.79.0.20',
+      target: 'https://www.jiafeng.co',
+      // target: 'http://120.79.0.20',
       pathRewrite: {
         '^/api': '/'
       }
     },
     '/wp-content': {
-      // target: 'https://www.jiafeng.co'
-      target: 'http://120.79.0.20'
+      target: 'https://www.jiafeng.co'
+      // target: 'http://120.79.0.20'
     }
   },
 

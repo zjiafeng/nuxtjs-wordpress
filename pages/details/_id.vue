@@ -267,7 +267,7 @@ export default {
       // 从这开始是设置行号
       block.innerHTML = `<ol><li>${block.innerHTML.replace(
         /\n/g,
-        `</li><li class="line">`
+        '</li><li class="line">'
       )}</li></ol>`;
     })
   },

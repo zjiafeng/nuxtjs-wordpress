@@ -7,9 +7,9 @@
           :key="index"
           :href="item.url"
           :target="item.target"
-          :title="item.text"
+          :title="item.name"
         >
-          {{ item.text }}
+          {{ item.name }}
         </a>
       </div>
       <div class="copyright">
@@ -32,7 +32,7 @@
               >
                 {{ item.title }}
               </nuxt-link>
-              <a v-else-if="item.object === 'custom'" :href="item.url">{{ item.title }}</a>
+              <a v-else-if="item.object === 'custom'" :href="item.url" :target="item.target">{{ item.title }}</a>
             </li>
             <li class="list">
               <nuxt-link to="/sitemap">站点地图</nuxt-link>
@@ -61,7 +61,7 @@ export default {
   computed: {
     ...mapState(['menuStatus', 'links', 'subMenu', 'errorInformation']),
     ...mapState({
-      copyright: state => state.info.copyright
+      copyright: state => state.globalConfig.copyright
     })
   },
   mounted () {

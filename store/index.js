@@ -5,7 +5,7 @@ import {
 } from './mutations-types'
 
 export const state = () => ({
-  info: {},
+  globalConfig: {},
   menu: {},
   subMenu: {},
   links: [],
@@ -18,8 +18,8 @@ export const state = () => ({
 })
 
 export const mutations = {
-  [UPDATE_GLOBAL_INFO](state, { info, menu, subMenu, links }) {
-    state.info = info
+  [UPDATE_GLOBAL_INFO](state, { globalConfig, menu, subMenu, links }) {
+    state.globalConfig = globalConfig
     state.menu = menu
     state.subMenu = subMenu
     state.links = links
@@ -40,7 +40,8 @@ export const actions = {
     try {
       const { data: globalInfo } = await this.$axios.$get(`${process.env.baseUrl}/wp-json/xm-blog/v1/info`)
       const { data: menu } = await this.$axios.$get(`${process.env.baseUrl}/wp-json/xm-blog/v1/menu`)
-      const { data: links } = await this.$axios.$get(`${process.env.baseUrl}/wp-json/xm-blog/v1/get-links?type=home`)
+      const { data: links } = await this.$axios.$get(`${process.env.baseUrl}/wp-json/xm/v2/links?category=${encodeURI('首页')}`)
+
       // 判断banner类型
       if (globalInfo.banner.style === '1') {
         globalInfo.banner.big = globalInfo.banner.list[0]
@@ -48,7 +49,7 @@ export const actions = {
         globalInfo.banner.small = [banner1, banner2, banner3]
       }
       const result = {
-        info: globalInfo,
+        globalConfig: globalInfo,
         menu: menu.mainMenu,
         subMenu: menu.subMenu,
         links
@@ -63,7 +64,7 @@ export const actions = {
   // 上传图片
   async uploadImage({ commit, rootState }, { requestData, config = {} }) {
     try {
-      const { data } = await this.$axios.$post(`${process.env.baseUrl}/wp-content/themes/${rootState.info.themeDir}/v2/xm_upload.php`, requestData, {
+      const { data } = await this.$axios.$post(`${process.env.baseUrl}/wp-content/themes/${rootState.globalConfig.themeDir}/v2/xm_upload.php`, requestData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           progress: false
@@ -79,7 +80,7 @@ export const actions = {
   // 删除图片
   async deleteImage({ commit, rootState }, requestData) {
     try {
-      const { data } = await this.$axios.$post(`${process.env.baseUrl}/wp-content/themes/${rootState.info.themeDir}/v2/xm_upload.php`, requestData, {
+      const { data } = await this.$axios.$post(`${process.env.baseUrl}/wp-content/themes/${rootState.globalConfig.themeDir}/v2/xm_upload.php`, requestData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           progress: false

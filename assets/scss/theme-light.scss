@@ -1,5 +1,5 @@
-@media (prefers-color-scheme: light) {
-  :root {
+@mixin light {
+  // :root {
     --color-theme: #{$color-theme};
     --color-theme-secondary: #{$color-theme-secondary};
     --color-title: #{$color-theme};
@@ -12,7 +12,10 @@
     --color-white: #{$color-white};
     --color-border: #{$color-border};
     --color-menu-background-m: var(--color-sub-background);
-  }
+  // }
+
+  background-image: url(../images/road_tree.jpg) !important;
+  background-size: cover;
 
   #app {
     .header-container {

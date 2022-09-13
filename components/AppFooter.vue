@@ -65,6 +65,16 @@ export default {
     })
   },
   mounted () {
+    // 从 localStorage 检测主题
+    let themeData = localStorage.getItem('JiaFengBlog_data-theme');
+    // 如果是第一次进入页面，直接设置为 auto
+    if (!themeData || themeData === 'auto') {
+      localStorage.setItem('JiaFengBlog_data-theme', 'auto');
+      document.body.setAttribute('data-theme', 'auto');
+    } else {
+      // 如果非自动模式，调整主题
+      document.body.setAttribute('data-theme', themeData === 'dark' ? 'dark' : 'light');
+    }
     const self = this
     window.addEventListener('scroll', function () {
       self.isShowBackTop = this.scrollY > 300

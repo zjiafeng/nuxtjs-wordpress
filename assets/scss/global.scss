@@ -49,8 +49,6 @@ body {
   &.blank-page {
     background-color: var(--color-sub-background);
   }
-  background-image: url(../images/road_tree.jpg) !important;
-  background-size: cover;
 }
 
 .nuxt-link-exact-active {
@@ -286,4 +284,99 @@ pre {
   list-style-position: outside;
   border-left: 1px solid #c5c5c5;
   margin-top: 0;
+}
+
+// switch-theme
+.switch-theme{
+  font-size: 8px;
+  line-height: normal;
+  .c-switch__background {
+    --border: #193a4a;
+    color: #96cae5;
+    width: 6.25em;
+    height: 3.125em;
+    padding: 0.375em 0.438em;
+    border: 0.188em solid var(--border);
+    border-radius: 3.125em;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    background-color: #1e4b65;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .c-switch__background::before,
+  .c-switch__background::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background-color: currentColor;
+  }
+  .c-switch__background::after {
+      height: 9em;
+      width: 9em;
+      top: -115%;
+      left: -10%;
+      transform: scale(0.03);
+      z-index: 1;
+      transition: transform 0.3s;
+  }
+  .c-switch__background::before {
+      height: 0.2em;
+      width: 0.2em;
+      top: 20%;
+      left: 55%;
+      box-shadow: -0.1em 1.5em 0 -0.025em, 1.5em 0.3em 0 0.01em, 1.5em 0.3em 0 0.01em, 1.5em 1.3em 0 -0.05em, 1em 1.7em 0 -0.02em;
+  }
+  .c-switch__figure {
+      height: calc(3.125em - 0.375em - (0.188em * 4));
+      width: calc(3.125em - 0.375em - (0.188em * 4));
+      border-radius: 50%;
+      border: 0.188em solid #caba94;
+      box-sizing: inherit;
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      background-color: #ffefb5;
+      box-shadow: inset -0.15em -0.15em #ffe096;
+      background-image: radial-gradient(circle at 60% 10%, #e6cea5 15%, transparent 0), radial-gradient(circle at 30% 50%, #e6cea5 10%, transparent 0), radial-gradient(circle at 60% 70%, #e6cea5 13%, transparent 0);
+      transition: transform 0.2s ease-in-out, background-color 0.3s, border-color 0.3s;
+  }
+  .c-switch__figure::after {
+      color: white;
+      content: "";
+      position: absolute;
+      right: 50%;
+      top: 55%;
+      width: 1.5em;
+      height: 0.3em;
+      border-radius: 2em;
+      box-shadow: -0.5em -0.2em, -1em 0.1em 0 -0.1em;
+      opacity: 0;
+      transform: translateX(-50%);
+      background-color: currentColor;
+  }
+  .c-switch__input {
+      display: none;
+  }
+  .c-switch__input:checked + .c-switch__background {
+      --border: #8abed8;
+      background-color: currentColor;
+  }
+  .c-switch__input:checked + .c-switch__background::after {
+      transform: scale(1);
+  }
+  .c-switch__input:checked + .c-switch__background > .c-switch__figure {
+      transform: translateX(calc(6.25em - (100% + (0.438em * 2) + (0.188em * 2))));
+      background-color: #ffde7b;
+      border-color: #debd56;
+      box-shadow: none;
+      background-size: 0;
+  }
+  .c-switch__input:checked + .c-switch__background > .c-switch__figure::after {
+      transition: transform 0.5s, opacity 0.5s;
+      opacity: 1;
+      transform: translateX(0%);
+  }
 }

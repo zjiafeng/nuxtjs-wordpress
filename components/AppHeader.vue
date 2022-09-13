@@ -4,12 +4,12 @@
     <div class="header-content" ref="header">
       <div class="wrap h-f-100">
         <!-- logo 开始 -->
-        <!-- <div class="logo">
-          <h1>{{ info.blogName }}</h1>
+        <div class="logo">
+          <!-- <h1>{{ info.blogName }}</h1>
           <nuxt-link :to="{ name: 'index' }" class="block">
             <img :src="info.logo" class="vertical-middle" width="120" height="40">
-          </nuxt-link>
-        </div> -->
+          </nuxt-link> -->
+        </div>
         <!-- logo结束 -->
         <!-- 导航开始 -->
         <div :class="['nav-wrapper', 'h-f-100', menuStatus && 'is-show']">
@@ -82,6 +82,12 @@
         <!-- 导航结束 -->
         <!-- 右侧搜索开始 -->
         <div class="controller">
+          <div class="switch-theme">
+            <input type="checkbox" class="c-switch__input" id="checkbox" @change="handleSwitch" v-model="switchValue">
+            <label class="c-switch__background js-switch" for="checkbox">
+                <span class="c-switch__figure"></span>
+            </label>
+          </div>
           <div :class="['search-wrapper', isShowSearch && 'is-show']">
             <div class="search-content">
               <input
@@ -105,6 +111,7 @@
 <script>
 import { mapState } from 'vuex'
 import $ from '@/utils/operationDOM'
+import { getNowTheme, switchTheme } from '@/utils/switchTheme'
 export default {
   watchQuery: ['type'],
   name: 'AppHeader',
@@ -112,7 +119,8 @@ export default {
     return {
       searchText: '',
       isShowSearch: false,
-      mark: true
+      mark: true,
+      switchValue: true
     }
   },
   head () {
@@ -131,6 +139,9 @@ export default {
       return this.menuStatus ? `${window.innerHeight}px` : '100%'
     }
   },
+  mounted() {
+    this.$nextTick(()=>{this.switchValue = getNowTheme() === 'light'})
+  },
   watch: {
     menuStatus (v) {
       this.mark = !v
@@ -139,6 +150,9 @@ export default {
     }
   },
   methods: {
+    handleSwitch(){
+      switchTheme();
+    },
     // 搜索
     _search () {
       this.$router.push({
@@ -258,6 +272,15 @@ $headerHeight: 60px;
       border-radius: 0 $border-radius $border-radius 0;
     }
   }
+
+  .controller{
+    display: flex;
+    align-items: center;
+    >.switch-theme{
+      margin-right: 12px;
+      margin-top: 4px;
+    }
+  }
 }
 
 @media screen and (min-width:1024px) {
@@ -364,10 +387,10 @@ $headerHeight: 60px;
       right: 0;
       z-index: $z-index + 200;
       width: 200px;
-      height: calc(100% - 60px);
+      height: calc(100vh - 60px);
       margin: 0;
       padding: 0 20px;
-      overflow-y: scroll;
+      overflow-y: auto;
       -webkit-overflow-scrolling: touch;
       background: var(--color-menu-background-m);
       transition: .5s;

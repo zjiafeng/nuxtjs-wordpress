@@ -23,7 +23,7 @@
         </div>
         <ul class="small-banner">
           <li class="list" v-for="item in globalConfig.banner.small" :key="item.key">
-            <a class="block" :href="item.link">
+            <a class="block h-f-100" :href="item.link">
               <img :src="item.path" class="img-hover">
               <span v-if="item.text" class="title" :title="item.text">{{ item.text }}</span>
             </a>

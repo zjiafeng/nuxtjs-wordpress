@@ -72,14 +72,12 @@ export default {
   proxy: {
     '/api': {
       target: 'https://www.jiafeng.co',
-      // target: 'http://120.79.0.20',
       pathRewrite: {
         '^/api': '/'
       }
     },
     '/wp-content': {
       target: 'https://www.jiafeng.co'
-      // target: 'http://120.79.0.20'
     }
   },
 

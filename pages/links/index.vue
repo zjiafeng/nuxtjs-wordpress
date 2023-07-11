@@ -58,8 +58,8 @@ export default {
       <h2>欢迎大家在评论区留言交换友链，为方便添加贵站友链，留言格式如下：</h2>
       <ul>
         <li>站点名称：Jiafeng Blog</li>
-        <li>站点网址：https://www.jiafeng.co</li>
-        <li>站点头像：https://www.jiafeng.co/favicon.ico</li>
+        <li>站点网址：https://www.jiafeng.fun</li>
+        <li>站点头像：https://www.jiafeng.fun/favicon.ico</li>
         <li>站点简介<em>（可无）</em>：个人博客，前端技术分享</li>
       </ul>
       `

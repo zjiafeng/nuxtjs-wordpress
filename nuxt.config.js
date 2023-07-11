@@ -71,13 +71,13 @@ export default {
   // 将此处2个地址改为自己的地址
   proxy: {
     '/api': {
-      target: 'https://www.jiafeng.co',
+      target: 'https://www.jiafeng.fun',
       pathRewrite: {
         '^/api': '/'
       }
     },
     '/wp-content': {
-      target: 'https://www.jiafeng.co'
+      target: 'https://www.jiafeng.fun'
     }
   },
 

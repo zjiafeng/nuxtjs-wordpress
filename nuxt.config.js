@@ -1,3 +1,4 @@
+const CompressionPlugin = require("compression-webpack-plugin");
 export default {
   mode: 'universal',
 
@@ -53,7 +54,8 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    'nuxt-precompress'
   ],
 
   axios: {
@@ -63,7 +65,14 @@ export default {
   build: {
     transpile: [/^element-ui/],
     extractCSS: true,
-    vendors: ['@nuxtjs/axios', 'element-ui']
+    vendors: ['@nuxtjs/axios', 'element-ui'],
+    plugins: [
+      new CompressionPlugin({
+        test: /\.js$|\.html$|\.css/, // 匹配文件名
+        threshold: 10240, // 对超过10kb的数据进行压缩
+        deleteOriginalAssets: false, // 是否删除原文件
+      }),
+    ],
     // extend(config, ctx) {
     // }
   },
@@ -83,5 +92,32 @@ export default {
 
   env: {
     baseUrl: '/api'
-  }
+  },
+
+  nuxtPrecompress: {
+    gzip: {
+      enabled: true,
+      filename: '[path].gz[query]',
+      threshold: 10240,
+      minRatio: 0.8,
+      compressionOptions: { level: 9 },
+    },
+    brotli: {
+      enabled: true,
+      filename: '[path].br[query]',
+      compressionOptions: { level: 11 },
+      threshold: 10240,
+      minRatio: 0.8,
+    },
+    enabled: true,
+    report: false,
+    test: /\.(js|css|html|txt|xml|svg)$/,
+    // Serving options
+    middleware: {
+      enabled: true,
+      enabledStatic: true,
+      encodingsPriority: ['br', 'gzip'],
+    },
+  },
+
 }
